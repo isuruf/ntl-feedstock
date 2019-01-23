@@ -1,4 +1,3 @@
-copy %RECIPE_DIR%\windows\gen_gmp_aux.cpp gen_gmp_aux.cpp
 copy %RECIPE_DIR%\windows\CMakeLists.txt CMakeLists.txt
 
 cmake -G "%CMAKE_GENERATOR%" ^
