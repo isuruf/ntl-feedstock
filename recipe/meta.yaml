@@ -16,7 +16,7 @@ source:
       - config.gmp.patch   # [win]
 
 build:
-  number: 1002
+  number: 1001
   skip: True    # [win and vc<14]
   track_features:
     - ntl
