@@ -1,5 +1,5 @@
-echo copy %RECIPE_DIR%/CMakeLists.gen_gmp_aux.txt ntl/CMakeLists.txt
-copy %RECIPE_DIR%/CMakeLists.gen_gmp_aux.txt ntl/CMakeLists.txt
+echo copy %RECIPE_DIR%\CMakeLists.gen_gmp_aux.txt ntl/CMakeLists.txt
+copy %RECIPE_DIR%\CMakeLists.gen_gmp_aux.txt ntl/CMakeLists.txt
 
 cmake -G "%CMAKE_GENERATOR%" ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
