@@ -14,6 +14,7 @@ file(GLOB SOURCES src/*.cpp)
 add_executable(gen_gmp_aux gen_gmp_aux.cpp)
 target_include_directories(gen_gmp_aux PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include ${GMP_INCLUDE_DIR})
 target_link_libraries(gen_gmp_aux ${GMP_LIBRARY})
+target_compile_options(gen_gmp_aux MSC_USE_DLL)
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/NTL)
 
@@ -26,6 +27,7 @@ add_custom_target(run_gmp_aux
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 target_include_directories(ntl PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_CURRENT_BINARY_DIR}/include ${GMP_INCLUDE_DIR} ${GF2X_INCLUDE_DIR})
 target_link_libraries(ntl ${GMP_LIBRARY} ${GF2X_LIBRARY})
+target_compile_options(ntl MSC_USE_DLL)
 add_dependencies(${PROJECT_NAME} run_gmp_aux)
 
 install(TARGETS ${PROJECT_NAME}
