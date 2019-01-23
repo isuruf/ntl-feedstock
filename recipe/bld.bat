@@ -1,3 +1,4 @@
+echo copy %RECIPE_DIR%/CMakeLists.gen_gmp_aux.txt ntl/CMakeLists.txt
 copy %RECIPE_DIR%/CMakeLists.gen_gmp_aux.txt ntl/CMakeLists.txt
 
 cmake -G "%CMAKE_GENERATOR%" ^
@@ -11,6 +12,7 @@ cmake --build .
 gen_gmp_aux.exe > ntl/include/NTL/gmp_aux.h
 del gen_gmp_aux.exe
 
+echo copy %RECIPE_DIR%/CMakeLists.txt ntl/CMakeLists.txt
 copy %RECIPE_DIR%/CMakeLists.txt ntl/CMakeLists.txt
 
 cmake -G "%CMAKE_GENERATOR%" ^
