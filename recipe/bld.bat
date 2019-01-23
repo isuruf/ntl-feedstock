@@ -11,7 +11,7 @@ cmake --build .
 gen_gmp_aux.exe > ntl/include/NTL/gmp_aux.h
 del gen_gmp_aux.exe
 
-copy %RECIPE_DIR/%CMakeLists.txt ntl/CMakeLists.txt
+copy %RECIPE_DIR%/CMakeLists.txt ntl/CMakeLists.txt
 
 cmake -G "%CMAKE_GENERATOR%" ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
