@@ -12,7 +12,7 @@ find_path(GF2X_INCLUDE_DIR NAMES gf2x.h)
 file(GLOB SOURCES src/*.cpp)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
-target_include_directories(ntl include ${GMP_INCLUDE_DIR} ${GF2X_INCLUDE_DIR})
+target_include_directories(ntl PRIVATE ${GMP_INCLUDE_DIR} ${GF2X_INCLUDE_DIR})
 target_link_libraries(ntl ${GMP_LIBRARY} ${GF2X_LIBRARY})
 
 install(TARGETS ${PROJECT_NAME}
