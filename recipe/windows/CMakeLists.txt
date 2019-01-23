@@ -11,9 +11,22 @@ find_path(GF2X_INCLUDE_DIR NAMES gf2x.h)
 
 file(GLOB SOURCES src/*.cpp)
 
+add_executable(gen_gmp_aux src/gen_gmp_aux.cpp)
+target_include_directories(gen_gmp_aux PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/ ${GMP_INCLUDE_DIR})
+target_link_libraries(gen_gmp_aux ${GMP_LIBRARY})
+
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/NTL)
+
+add_custom_target(run_gmp_aux
+  COMMAND gen_gmp_aux > ${CMAKE_CURRENT_BINARY_DIR}/include/NTL/gmp_aux.h
+  COMMENT "Run gen_gmp_aux"
+  DEPENDS gen_gmp_aux
+)
+
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
-target_include_directories(ntl PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include ${GMP_INCLUDE_DIR} ${GF2X_INCLUDE_DIR})
+target_include_directories(ntl PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_CURRENT_BINARY_DIR} ${GMP_INCLUDE_DIR} ${GF2X_INCLUDE_DIR})
 target_link_libraries(ntl ${GMP_LIBRARY} ${GF2X_LIBRARY})
+add_dependencies(${PROJECT_NAME} run_gmp_aux)
 
 install(TARGETS ${PROJECT_NAME}
                 RUNTIME DESTINATION bin
